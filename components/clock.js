@@ -5,6 +5,8 @@ const formatTime = (time) => (
   new Date(time).toJSON().slice(11, 19)
 )
 
+console.log('asdasdasd', process.env.NEXT_BASE_URL)
+
 const Clock = () => {
   const lastUpdate = useSelector((state) => state.timer.lastUpdate)
   const light = useSelector((state) => state.timer.light)
