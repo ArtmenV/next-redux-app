@@ -1,10 +1,10 @@
-import { composeWithDevTools } from 'redux-devtools-extension'  
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { useMemo } from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './root-reducer'
 
-let store 
+let store
 
 function initStore(initState) {
   return createStore(
@@ -15,8 +15,14 @@ function initStore(initState) {
 }
 
 export const initializeStore = (preloadedState) => {
-  //check for null, undefined or default state
-  let _store = store ?? initStore(preloadedState)
+  // eslint-disable-next-line
+  let _store
+  if (store) {
+    _store = store
+  } else {
+    _store = initStore(preloadedState)
+  }
+  // let _store = store ?? initStore(preloadedState)
 
   if (preloadedState && store) {
     _store = initStore({
@@ -36,6 +42,6 @@ export const initializeStore = (preloadedState) => {
 }
 
 export function useStore(initialState) {
-  const store = useMemo(() => initializeStore(initialState), [initialState])
+  store = useMemo(() => initializeStore(initialState), [initialState])
   return store
 }

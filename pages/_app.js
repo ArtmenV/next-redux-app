@@ -1,17 +1,22 @@
-// import App from 'next/app'
-// import * as React from 'react'
+import * as React from 'react'
+import PropTypes from 'prop-types';
+
 import { Provider } from 'react-redux'
 import { useStore } from '../store'
-// import { createWrapper } from 'next-redux-wrapper'
-// import store from '../store'
+
+import '../styles/global.scss'
 
 export default function App({ Component, pageProps }) {
-
   const store = useStore(pageProps.initialReduxState)
 
   return (
-    <Provider store = {store}>
+    <Provider store={store}>
       <Component {...pageProps} />
     </Provider>
   )
+}
+
+App.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.any.isRequired
 }
