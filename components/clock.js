@@ -1,8 +1,11 @@
+import * as React from 'react'
 import { useSelector } from 'react-redux'
 
-const formatTime = (time) => {
-  return new Date(time).toJSON().slice(11, 19)
-}
+const formatTime = (time) => (
+  new Date(time).toJSON().slice(11, 19)
+)
+
+console.log('asdasdasd', process.env.NEXT_BASE_URL)
 
 const Clock = () => {
   const lastUpdate = useSelector((state) => state.timer.lastUpdate)
@@ -10,7 +13,8 @@ const Clock = () => {
   return (
     <div className={light ? 'light' : ''}>
       {formatTime(lastUpdate)}
-      <style jsx>{`
+      <style jsx>
+        {`
         div {
           padding: 15px;
           display: inline-block;
@@ -21,7 +25,8 @@ const Clock = () => {
         .light {
           background-color: #999;
         }
-      `}</style>
+      `}
+      </style>
     </div>
   )
 }

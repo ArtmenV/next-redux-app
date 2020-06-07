@@ -1,9 +1,12 @@
 import Head from 'next/head'
+import * as React from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Link from 'next/link'
-import { startClock } from '../store/post/action'
+import { startClock } from '../store/common/action'
 import Examples from '../components/examples'
+
+
 
 const Home = () => {
 
